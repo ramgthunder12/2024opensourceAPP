@@ -1,24 +1,36 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, StyleSheet, TouchableOpacity, Image, ImageBackground } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const MainScreen = (props) => {
+  useEffect(() => {
+    const initializeAsyncStorage = async () => {
+      try {
+        await AsyncStorage.clear();
+        console.log('AsyncStorage has been cleared');
+      } catch (e) {
+        console.error('Failed to clear AsyncStorage:', e);
+      }
+    };
+    initializeAsyncStorage();
+  }, []);
   return (
-    <View style={styles.container}>
-      <ImageBackground
-        source={require('../assets/MainImage.png')}
-        style={styles.background}
-      >
-        <View style={styles.innerContainer}>
-          <TouchableOpacity onPress={() => {props.navigation.navigate('Login')}} style={styles.button}>
-            <Image 
-              source={require('../assets/PlayIcon.png')} 
-              style={styles.buttonImage}
-              resizeMode="contain"
-            />
-          </TouchableOpacity>
+        <View style={styles.container}>
+          <ImageBackground
+            source={require('../assets/MainImage.png')}
+            style={styles.background}
+          >
+            <View style={styles.innerContainer}>
+              <TouchableOpacity onPress={() => {props.navigation.navigate('Login')}} style={styles.button}>
+                <Image
+                  source={require('../assets/PlayIcon.png')}
+                  style={styles.buttonImage}
+                  resizeMode="contain"
+                />
+              </TouchableOpacity>
+            </View>
+          </ImageBackground>
         </View>
-      </ImageBackground>
-    </View>
   );
 };
 

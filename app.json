@@ -18,7 +18,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.ramgthunder.snackaaa5e58feeee4aef846ee8240a14e1bf"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -27,6 +28,14 @@
       "eas": {
         "projectId": "dab8ea6f-0664-481b-8b69-7549afb6cf19"
       }
-    }
+    },
+    "plugins": [
+      [
+        "@react-native-seoul/naver-login",
+        {
+          "urlScheme": "http://localhost:3000"
+        }
+      ]
+    ]
   }
 }

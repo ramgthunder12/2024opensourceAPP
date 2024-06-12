@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, ImageBackground, SafeAreaView } from 'react-native';
-
+import LocationComponent from '../components/location.js';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+//게임 누르면 1. 내 위치와 가까운 사람 있나 확인 2.-1있으면 그 게임룸으로 들어간다. 2.-2 없으면 게임룸 생성
 const HomeScreen = (props) => {
   const rand = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -25,9 +27,11 @@ const HomeScreen = (props) => {
           <TouchableOpacity style={styles.profileButton}>
             <Image source={require('../assets/User.png')} style={styles.icon} />
           </TouchableOpacity>
+          {/*TODO 내정보 화면 불러서 보여주기*/}
           <TouchableOpacity style={styles.settingsButton}>
             <Image source={require('../assets/Setting.png')} style={styles.icon} />
           </TouchableOpacity>
+          <LocationComponent />
         </View>
         <View style={styles.buttonContainer}>
           <TouchableOpacity onPress={() => {props.navigation.navigate('WaitArrow')}} style={[styles.gameButton, styles.arrowGameButton]}>
